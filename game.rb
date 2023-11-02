@@ -177,7 +177,7 @@ module TicTacToe
     end
   end
 end
- 
+
 include TicTacToe
 
 Game.new(ComputerPlayer, ComputerPlayer).play

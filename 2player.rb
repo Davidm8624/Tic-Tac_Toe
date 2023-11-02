@@ -60,6 +60,30 @@ class GameBoard
     puts "Next turn: Player #{@current_player}"
   end
 
+  def game_over?
+    check_winner('X') || check_winner('O') || is_draw?
+  end
+
   public
+
+  def start_game
+    @current_player = 'X'
+    until game_over?
+      display_board
+      puts "Player #{@current_player}, enter your move (1-9): "
+      position = gets.chomp.to_i
+      make_move(position, @current_player)
+    end
+  
+    if check_winner('X')
+      puts "Player X wins!"
+    elsif check_winner('O')
+      puts "Player O wins!"
+    else
+      puts "It's a draw!"
+    end
+  end  
 end
 
+game = GameBoard.new
+game.start_game
